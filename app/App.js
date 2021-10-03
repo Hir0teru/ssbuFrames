@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SelectCharacter from './screens/SelectCharacter';
 import ViewFrameData from './screens/ViewFrameData';
+import Settings from './screens/Settings';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -22,6 +23,10 @@ const App = () => {
             title: route.params.name,
             headerBackTitle: '戻る'
           })}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
         />
       </Stack.Navigator>
     </NavigationContainer>
