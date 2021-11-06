@@ -6,7 +6,8 @@ import Settings from '../screens/Settings';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = () => {
+const TabNavigator = ({theme}) => {
+  const {colors} = theme;
   return (
       <Tab.Navigator screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -20,18 +21,39 @@ const TabNavigator = () => {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        /* tabBarActiveTintColor: 'skyblue', 一旦デフォルト
-        tabBarInactiveTintColor: 'gray' */
+        tabBarStyle: {backgroundColor: colors.background},
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.primary
       })}>
         <Tab.Screen
           name="Home"
           component={SelectCharacter}
           options={{title: 'ホーム'}}
+          options={{
+            title: 'ホーム',
+            headerStyle: {
+              backgroundColor: colors.background // ヘッダーカラー
+            },
+            headerTintColor: colors.primary,
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
         />
         <Tab.Screen
           name="Settings"
           component={Settings}
           options={{title: '設定'}}
+          options={{
+            title: '設定',
+            headerStyle: {
+              backgroundColor: colors.background,
+            },
+            headerTintColor: colors.primary,
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
         />
       </Tab.Navigator>
   );
