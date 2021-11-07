@@ -18,7 +18,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.h1r0teru.app"
+      "bundleIdentifier": "com.h1r0teru.app",
+      "userInterfaceStyle": "automatic"
     },
     "android": {
       "adaptiveIcon": {
