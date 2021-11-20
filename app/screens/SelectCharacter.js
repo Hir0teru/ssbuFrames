@@ -1,9 +1,8 @@
-import React, {useState, useEffect, useRef}  from 'react';
-import {View} from 'react-native';
+import React, { useState, useEffect, useRef }  from 'react';
+import { View, FlatList } from 'react-native';
 import {Searchbar, Divider} from 'react-native-paper';
 import db from '../db/firebase'
 import CharacterCard from '../components/CharacterCard';
-
 
 const selectCharacter = () => {
   const [staticCharacterData, setStaticCharacterData] = useState([]); // 初回レンダリング時にfirestoreから取得したデータ用
@@ -52,7 +51,12 @@ const selectCharacter = () => {
         value={value}
       />
       <Divider />
-      {cards}
+      <FlatList
+      data={cards}
+      renderItem={({item}) => {
+        return item
+      }}
+    />
     </View>
   );
 }
