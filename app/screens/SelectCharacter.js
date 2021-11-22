@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef }  from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, SafeAreaView } from 'react-native';
 import {Searchbar, Divider} from 'react-native-paper';
 import db from '../db/firebase'
 import CharacterCard from '../components/CharacterCard';
@@ -44,7 +44,7 @@ const selectCharacter = () => {
   })
 
   return (
-    <View>
+    <SafeAreaView style={{ flex: 1 }}>
       <Searchbar
         placeholder="キャラクター名を入力してください"
         onChangeText={onChangeSearch}
@@ -57,7 +57,7 @@ const selectCharacter = () => {
         return item
       }}
     />
-    </View>
+    </SafeAreaView>
   );
 }
 
