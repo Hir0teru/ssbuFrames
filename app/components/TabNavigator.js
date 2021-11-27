@@ -1,6 +1,7 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useTranslation } from 'react-i18next';
 import SelectCharacter from '../screens/SelectCharacter';
 import Settings from '../screens/Settings';
 
@@ -8,6 +9,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = ({theme}) => {
   const {colors} = theme;
+  const { t } = useTranslation()
   return (
       <Tab.Navigator screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -28,9 +30,9 @@ const TabNavigator = ({theme}) => {
         <Tab.Screen
           name="Home"
           component={SelectCharacter}
-          options={{title: 'ホーム'}}
+          options={{title: t('home')}}
           options={{
-            title: 'ホーム',
+            title: t('home'),
             headerStyle: {
               backgroundColor: colors.background // ヘッダーカラー
             },
@@ -43,9 +45,9 @@ const TabNavigator = ({theme}) => {
         <Tab.Screen
           name="Settings"
           component={Settings}
-          options={{title: '設定'}}
+          options={{title: t('settings')}}
           options={{
-            title: '設定',
+            title: t('settings'),
             headerStyle: {
               backgroundColor: colors.background,
             },
