@@ -39,6 +39,7 @@ const lightTheme = {
 };
 
 const App = () => {
+  const { t } = useTranslation()
   const { color } = useColorContext()
   const theme =  color === 'light' ? lightTheme : darkTheme
   const { colors } = theme
@@ -68,7 +69,7 @@ const App = () => {
             component={ViewFrameData}
             options={({route}) => ({
               title: route.params.name,
-              headerBackTitle: '戻る',
+              headerBackTitle: t('back'),
               headerStyle: {
                 backgroundColor: colors.background,
               },

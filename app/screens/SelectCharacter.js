@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef }  from 'react';
 import { View, FlatList, SafeAreaView } from 'react-native';
 import {Searchbar, Divider} from 'react-native-paper';
-import db from '../db/firebase'
+import { useTranslation } from 'react-i18next';
+import db from '../db/firebase';
 import CharacterCard from '../components/CharacterCard';
 
 const selectCharacter = () => {
@@ -10,6 +11,7 @@ const selectCharacter = () => {
   const isFirstRender = useRef(false) // 初回レンダリング判定用
   const [value, setValue] = useState(""); // searchBar用
   const onChangeSearch = value => setValue(value); // searchBar用
+  const { t } = useTranslation()
 
   // 初回レンダリング時
   useEffect(() => {
@@ -46,7 +48,7 @@ const selectCharacter = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Searchbar
-        placeholder="キャラクター名を入力してください"
+        placeholder={t('Please enter character name')}
         onChangeText={onChangeSearch}
         value={value}
       />
