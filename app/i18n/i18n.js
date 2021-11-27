@@ -1,15 +1,18 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import en from './en';
+import ja from './ja';
+
 
 const resources = {
   en: {
     translation: {
-      "マリオ": "Mario",
-    }
+      ...en
+    },
   },
   ja: {
     translation: {
-      "マリオ": "マリオ",
+      ...ja
     }
   }
 };
