@@ -1,14 +1,16 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'react-native';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {DefaultTheme, DarkTheme, Provider as PaperProvider} from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { I18nextProvider, useTranslation } from 'react-i18next';
+import { DefaultTheme, DarkTheme, Provider as PaperProvider } from 'react-native-paper';
 import SelectCharacter from './screens/SelectCharacter';
 import ViewFrameData from './screens/ViewFrameData';
 import TabNavigator from './components/TabNavigator';
 import Settings from './screens/Settings';
-import { ColorProvider, useColorContext }from './context/ColorMode'
+import { ColorProvider, useColorContext }from './context/ColorMode';
+import i18n from './i18n/i18n'
 
 const Stack = createStackNavigator();
 
@@ -37,9 +39,10 @@ const lightTheme = {
 };
 
 const App = () => {
+  const { t } = useTranslation()
   const { color } = useColorContext()
   const theme =  color === 'light' ? lightTheme : darkTheme
-  const {colors} = theme
+  const { colors } = theme
   return (
     <PaperProvider theme={theme}>
       <StatusBar backgroundColor="blue" barStyle ={color === 'light' ? "dark-content" : "light-content"} />
@@ -66,7 +69,7 @@ const App = () => {
             component={ViewFrameData}
             options={({route}) => ({
               title: route.params.name,
-              headerBackTitle: '戻る',
+              headerBackTitle: t('back'),
               headerStyle: {
                 backgroundColor: colors.background,
               },
@@ -88,8 +91,10 @@ const App = () => {
 
 export default () => {
   return (
-    <ColorProvider>
-      <App />
-    </ColorProvider>
+    <I18nextProvider i18n={i18n}>
+      <ColorProvider>
+        <App />
+      </ColorProvider>
+    </I18nextProvider>
   );
 };
